@@ -3,16 +3,61 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title><img src="assets/img/logo.png" alt="Logo Home" width="100"></ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+<ion-content text-center>
+  <img src="assets/img/logo-h.png" alt="Logo Home">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-11>
+        <ion-item>
+          <ion-label>Serviço</ion-label>
+          <ion-select [(ngModel)]="servico" (ngModelChange)="buscaCidade(servico)">
+            <ion-option *ngFor="let servico of servicos" [value]="servico.id">{{servico.nome}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon item-end name="close" color="danger" style="font-size: 24px; padding-top: 10px" *ngIf="servico" (click)="clearServico()"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-11>
+        <ion-item>
+          <ion-label>Cidade</ion-label>
+          <ion-select [(ngModel)]="cidade" (ngModelChange)="buscaBairros(cidade)">
+            <ion-option *ngFor="let rowCidade of cidades" [value]="rowCidade.id">{{rowCidade.nome}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon item-end name="close" color="danger" style="font-size: 24px; padding-top: 10px" *ngIf="cidade" (click)="clearCidade()"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-11>
+        <ion-item>
+          <ion-label>Bairro</ion-label>
+          <ion-select [(ngModel)]="bairro">
+            <ion-option *ngFor="let bairro of bairros" [value]="bairro.id">{{bairro.nome}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col col-1>
+        <ion-icon item-end name="close" color="danger" style="font-size: 24px; padding-top: 10px" *ngIf="bairro" (click)="clearBairro()"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div padding>
+    <button ion-button block color="dark" [disabled]="!isInvalid()" (click)="buscaServico(cidade, bairro, servico)">PESQUISAR</button>
+  </div>
+  <div padding margin-top>
+    <ion-slides pager="false" autoplay="4000" effect="fade" loop="true" *ngIf="banners && banners.length">
+      <ion-slide *ngFor="let banner of banners">
+        <img src="http://www.clubedemaodeobra.com.br/admin/image/banner/{{banner.id}}-{{banner.cont}}.jpg" />
+      </ion-slide>
+    </ion-slides>
+  </div>
 </ion-content>

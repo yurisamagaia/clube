@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img src="assets/img/logo.png" alt="Logo Home" width="100"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background: #eaeaea">
+  <ion-card *ngFor="let item of items" (click)="treinamentoDet(item.id)">
+    <ion-card-content>
+      <p text-center>
+        <ion-icon name="trending-up" style="font-size: 50px"></ion-icon>
+      </p>
+      <p style="font-size: 14px"><b>{{item.nome}}</b></p>
+      <p>{{item.data | date: "dd/MM/yyyy"}} {{item.hora}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

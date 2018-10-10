@@ -1,0 +1,44 @@
+page-inscricao {
+  .profile-image-wrapper {
+    text-align: center;
+
+    .profile-image {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+
+      display: inline-block;
+
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .profile-image-placeholder {
+      display: inline-block;
+
+      background-color: #efeff4;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+
+      font-size: 12px;
+
+      ion-icon {
+        font-size: 44px;
+        margin-bottom: -30px;
+        margin-top: 30px;
+      }
+    }
+  }
+  .icon-signup{
+    font-size: 128px;
+    color: #888;
+  }
+  .change-photo{
+    font-size: 12px;
+    padding: 0px 0px 10px 0px;
+  }
+
+}

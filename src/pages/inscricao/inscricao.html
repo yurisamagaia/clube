@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img src="assets/img/logo.png" alt="Logo Home" width="100"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding-left padding-right padding-bottom style="background: #e8e8e8">
+  <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
+  <div class="profile-image-wrapper" (click)="presentActionSheet()">
+		<ion-icon name="contact" class="icon-signup" *ngIf="!base64Image"></ion-icon>
+    <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="base64Image"></div>
+		<div class="change-photo">Toque para adicionar uma foto</div>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Nome <span style="color: #ff0000">*</span></ion-label>
+      <ion-input type="text" [(ngModel)]="inscricao.nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>E-mail <span style="color: #ff0000">*</span></ion-label>
+      <ion-input type="email" [(ngModel)]="inscricao.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>RG <span style="color: #ff0000">*</span></ion-label>
+      <ion-input type="number" [(ngModel)]="inscricao.rg"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>CPF <span style="color: #ff0000">*</span></ion-label>
+      <ion-input type="number" [(ngModel)]="inscricao.cpf"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Endereço <span style="color: #ff0000">*</span></ion-label>
+      <ion-input type="text" [(ngModel)]="inscricao.endereco"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Número <span style="color: #ff0000">*</span></ion-label>
+      <ion-input type="number" [(ngModel)]="inscricao.numero"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Bairro <span style="color: #ff0000">*</span></ion-label>
+      <ion-input type="text" [(ngModel)]="inscricao.bairro"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Celular <span style="color: #ff0000">*</span></ion-label>
+      <ion-input type="tel" [(ngModel)]="inscricao.celular"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Telefone fixo</ion-label>
+      <ion-input type="tel" [(ngModel)]="inscricao.telefone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Descrição do serviço</ion-label>
+      <ion-textarea [(ngModel)]="inscricao.servico"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Cidades atendidas</ion-label>
+      <ion-textarea [(ngModel)]="inscricao.cidades"></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <div>
+    <button type="button" ion-button full (click)="enviarContato()" color="dark" [disabled]="isValid()">ENVIAR</button>
+  </div>
+</ion-content>

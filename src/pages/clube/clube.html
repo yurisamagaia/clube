@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img src="assets/img/logo.png" alt="Logo Home" width="100"></ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="ordem()" [hidden]="buttonSearch">
+        <ion-icon name="arrow-round-down" *ngIf="orderIcon == 'ASC'"></ion-icon>
+        <ion-icon name="arrow-round-up" *ngIf="orderIcon == 'DESC'"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background: #eaeaea">
+  <ion-searchbar placeholder="Buscar" (ionInput)="getItems($event)"></ion-searchbar>
+  <div text-center>
+    <p (click)="maisFiltros()" padding-top padding-bottom><ion-icon name="funnel" style="padding: 0px 8px"></ion-icon> Mais filtros</p>
+    <ion-grid *ngIf="filtros"  style="background: #f8f8f8; border-top: 1px solid #cdcdcd; border-bottom: 1px solid #cdcdcd">
+      <ion-row>
+        <ion-col col-4>
+          <button ion-button clear small color="primary" (click)="modalServico()" icon-left>
+            <ion-icon name="arrow-down"></ion-icon>
+            Serviços
+          </button>
+        </ion-col>
+        <ion-col col-4>
+          <button ion-button clear small color="primary" (click)="modalCidade()" icon-left>
+            <ion-icon name="arrow-down"></ion-icon>
+            Cidades
+          </button>
+        </ion-col>
+        <ion-col col-4>
+          <button ion-button clear small color="primary" (click)="modalAvaliacao()" icon-left>
+            <ion-icon name="arrow-down"></ion-icon>
+            Avaliações
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-card *ngFor="let servico of servicos">
+		<button ion-item (click)="openService(servico.id)">
+      <ion-avatar item-start>
+        <img src="http://www.clubedemaodeobra.com.br/admin/image/cliente/{{servico.id}}.jpg" style="border: 1px solid #cdcdcd; padding: 2px">
+      </ion-avatar>
+      <h2>{{servico.nome}}</h2>
+      <small>
+        <ion-icon item-end small name="star" *ngIf="servico.estrela == 1 || servico.estrela == 2 || servico.estrela == 3 || servico.estrela == 4 || servico.estrela == 5" style="color: #f4a400"></ion-icon>
+        <ion-icon item-end small name="star" *ngIf="servico.estrela == 2 || servico.estrela == 3 || servico.estrela == 4 || servico.estrela == 5" style="color: #f4a400"></ion-icon>
+        <ion-icon item-end small name="star" *ngIf="servico.estrela == 3 || servico.estrela == 4 || servico.estrela == 5" style="color: #f4a400"></ion-icon>
+        <ion-icon item-end small name="star" *ngIf="servico.estrela == 4 || servico.estrela == 5" style="color: #f4a400"></ion-icon>
+        <ion-icon item-end small name="star" *ngIf="servico.estrela == 5" style="color: #f4a400"></ion-icon>
+
+        <ion-icon item-end small name="star" *ngIf="servico.estrela == 0" style="color: #999"></ion-icon>
+        <ion-icon item-end small name="star" *ngIf="servico.estrela == 0 || servico.estrela == 1" style="color: #999"></ion-icon>
+        <ion-icon item-end small name="star" *ngIf="servico.estrela == 0 || servico.estrela == 1 || servico.estrela == 2" style="color: #999"></ion-icon>
+        <ion-icon item-end small name="star" *ngIf="servico.estrela == 0 || servico.estrela == 1 || servico.estrela == 2 || servico.estrela == 3" style="color: #999"></ion-icon>
+        <ion-icon item-end small name="star" *ngIf="servico.estrela == 0 || servico.estrela == 1 || servico.estrela == 2 || servico.estrela == 3 || servico.estrela == 4" style="color: #999"></ion-icon>
+        ( {{servico.total_estrela}} )
+      </small>
+		</button>
+  </ion-card>
+  <!--<p *ngIf="servicos?.length == 0" text-center style="color: #777; font-size: 16px" margin-top>Nenhum profissional encontrado :(</p>-->
+</ion-content>

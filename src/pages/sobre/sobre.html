@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img src="assets/img/logo.png" alt="Logo Home" width="100"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background: #eaeaea">
+  <ion-card>
+    <p *ngIf="!sobre" text-center margin-top><ion-spinner></ion-spinner></p>
+    <ion-card-content>
+      {{sobre}}
+    </ion-card-content>
+    <ion-slides padding>
+      <ion-slide *ngFor="let foto of fotos">
+        <img src="http://www.clubedemaodeobra.com.br/admin/image/texto/1/{{foto.id}}md.jpg" alt="">
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+</ion-content>

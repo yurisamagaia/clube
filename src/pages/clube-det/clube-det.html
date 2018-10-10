@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img src="assets/img/logo.png" alt="Logo Home" width="100"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background: #eaeaea">
+  <ion-card>
+    <ion-avatar item-start>
+      <img src="http://www.clubedemaodeobra.com.br/admin/image/cliente/{{servico.id}}.jpg" style="margin: 15px auto; width: 150px; border: 1px solid #cdcdcd; padding: 2px">
+    </ion-avatar>
+    <h1 *ngIf="servico.nome" text-center>{{servico.nome}}</h1>
+    <div text-center style="padding: 5px">
+      <span (click)="whatsApp(servico.whatsapp)" *ngIf="servico.whatsapp">
+        <ion-icon name='logo-whatsapp' style="font-size: 35px; color: #34af23 !important; padding: 10px"></ion-icon>
+      </span>
+      <span (click)="facebook(servico.facebook)" *ngIf="servico.facebook">
+        <ion-icon name='logo-facebook' style="font-size: 35px; color: #3b5998 !important; padding: 10px"></ion-icon>
+      </span>
+      <span (click)="instagram(servico.instagram)" *ngIf="servico.instagram">
+        <ion-icon name='logo-instagram' style="font-size: 35px; color: #CD853F !important; padding: 10px"></ion-icon>
+      </span>
+      <span (click)="twitter(servico.twitter)" *ngIf="servico.twitter">
+        <ion-icon name='logo-instagram' style="font-size: 35px; color: #00aced !important; padding: 10px"></ion-icon>
+      </span>
+      <a *ngIf="servico.youtube" style="text-decoration: none;">
+        <ion-icon name='logo-youtube' style="font-size: 35px; color: #bb0000 !important; padding: 10px"></ion-icon>
+      </a>
+      <a *ngIf="servico.skype" style="text-decoration: none;">
+        <ion-icon name='logo-skype' style="font-size: 35px; color: #00aff0 !important; padding: 10px"></ion-icon>
+      </a>
+      <a *ngIf="servico.googleplus" style="text-decoration: none;">
+        <ion-icon name='logo-googleplus' style="font-size: 35px; color: #dd4b39 !important; padding: 10px"></ion-icon>
+      </a>
+    </div>
+    <div style="padding: 0px 15px 15px 15px">
+      <p style="margin-top: 7px" *ngIf="servico.razao_social"><b>Razão Social:</b> {{servico.razao_social}}</p>
+      <p style="margin-top: 7px" *ngIf="servico.email"><b>E-mail:</b> {{servico.email}}</p>
+      <p style="margin-top: 7px" *ngIf="servico.cidade"><b>Cidade:</b> {{servico.cidade}}</p>
+      <p style="margin-top: 7px" *ngIf="servico.telefone"><b>Telefone:</b> <a href="tel:{{servico.telefone}}"><u>{{servico.telefone}}</u></a></p>
+      <p style="margin-top: 7px" *ngIf="servico.telefone2"><b>Telefone Alternativo:</b> <a href="tel:{{servico.telefone2}}"><u>{{servico.telefone2}}</u></a></p>
+      <p style="margin-top: 7px" *ngIf="servico.site"><b>Site:</b> {{servico.site}}</p>
+    </div>
+    <p>
+      <ion-card>
+    		<button ion-item (click)="modalServico(servico.descricao)">
+          Serviços Prestados
+    		</button>
+      </ion-card>
+      <ion-card>
+    		<button ion-item (click)="modalCidade(servico.cidades_atendidas)">
+          Regiões Atendidas
+    		</button>
+      </ion-card>
+      <ion-card>
+    		<button ion-item (click)="modalOrcamento(servico.email)">
+          Solicite um Orçamento
+    		</button>
+      </ion-card>
+      <ion-card>
+    		<button ion-item (click)="modalAvaliacao(servico.id)">
+          Avaliação dos Consumidores
+    		</button>
+      </ion-card>
+    </p>
+    <p padding-top>
+      <ion-slides pager>
+        <ion-slide *ngFor="let foto of servico.fotos">
+          <img src="http://www.clubedemaodeobra.com.br/admin/image/cliente/{{servico.id}}/{{foto.id}}lg.jpg" alt="">
+        </ion-slide>
+      </ion-slides>
+    </p>
+  </ion-card>
+</ion-content>

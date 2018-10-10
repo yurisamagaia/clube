@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img src="assets/img/logo.png" alt="Logo Home" width="100"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background: #e8e8e8">
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Nome <span style="color: #ff0000">*</span></ion-label>
+      <ion-input type="text" [(ngModel)]="contato.nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Empresa <span style="color: #ff0000">*</span></ion-label>
+      <ion-input type="text" [(ngModel)]="contato.empresa"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>E-mail <span style="color: #ff0000">*</span></ion-label>
+      <ion-input type="email" [(ngModel)]="contato.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Telefone <span style="color: #ff0000">*</span></ion-label>
+      <ion-input type="tel" [(ngModel)]="contato.telefone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Mensagem <span style="color: #ff0000">*</span></ion-label>
+      <ion-textarea [(ngModel)]="contato.mensagem"></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <div>
+    <button ion-button block (click)="enviarContato()" color="dark" [disabled]="!isValid()">ENVIAR</button>
+  </div>
+</ion-content>

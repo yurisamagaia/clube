@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img src="assets/img/logo.png" alt="Logo Home" width="100"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background: #eaeaea">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let foto of fotos" (click)="openFoto(foto.id)">
+    <p *ngIf="!foto" text-center margin-top><ion-spinner></ion-spinner></p>
+    <img src="http://www.clubedemaodeobra.com.br/admin/image/foto/{{foto.id}}/{{foto.id_foto}}md.jpg" />
+    <ion-card-content>
+      <p>{{foto.nome}}</p>
+      <small>{{foto.data | date: "dd/MM/yyyy"}}</small>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

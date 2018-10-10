@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img src="assets/img/logo.png" alt="Logo Home" width="100"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background: #eaeaea">
+  <ion-card padding-bottom>
+    <p *ngIf="!anuncie" text-center margin-top><ion-spinner></ion-spinner></p>
+    <ion-card-content>
+      {{anuncie.texto}}
+    </ion-card-content>
+    <ion-row no-padding>
+      <ion-col text-center *ngIf="anuncie.celular">
+        <span (click)="whatsApp(anuncie.celular)">
+          <ion-icon name='logo-whatsapp' style="font-size: 40px; color: #34af23 !important; padding: 10px"></ion-icon>
+          <p>Enviar mensagem</p>
+        </span>
+      </ion-col>
+      <ion-col text-center>
+        <span (click)="sendEmail(anuncie.email)" *ngIf="anuncie.email">
+          <ion-icon name='mail' style="font-size: 40px; padding: 10px"></ion-icon>
+          <p>Enviar e-mail</p>
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
